@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fixed Emoji Avatar Generator</title>
+    <style>
+        body { background: #0d1117; color: white; font-family: sans-serif; padding: 20px; }
+        canvas { border: 1px solid #333; margin: 10px; }
+        .preview { display: inline-block; margin: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Fixed Discord Avatar Generator</h1>
+    
+    <div class="preview">
+        <h3>🎨 Pebbles Preview</h3>
+        <canvas id="pebblesPreview" width="200" height="200"></canvas><br>
+        <button onclick="downloadFixed('pebbles', '🎨')">Download Pebbles (Fixed)</button>
+    </div>
+    
+    <div class="preview">
+        <h3>👽 Gazoo Preview</h3>
+        <canvas id="gazooPreview" width="200" height="200"></canvas><br>
+        <button onclick="downloadFixed('gazoo', '👽')">Download Gazoo (Fixed)</button>
+    </div>
+
+    <script>
+        function createPreview(canvasId, emoji) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            
+            // Create gradient
+            const gradient = ctx.createRadialGradient(
+                size * 0.3, size * 0.3, 0,
+                size * 0.5, size * 0.5, size * 0.7
+            );
+            gradient.addColorStop(0, '#305FD1');
+            gradient.addColorStop(1, '#0A2F8F');
+            
+            // Fill circle background
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Add glass overlay
+            const overlaySize = size * 0.35;
+            const overlayPos = (size - overlaySize) / 2;
+            ctx.fillStyle = 'rgba(233, 244, 255, 0.08)';
+            ctx.fillRect(overlayPos, overlayPos, overlaySize, overlaySize);
+            
+            // Add glass border
+            ctx.strokeStyle = 'rgba(233, 244, 255, 0.06)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(overlayPos, overlayPos, overlaySize, overlaySize);
+            
+            // Add emoji with proper font stack
+            ctx.font = `${size * 0.4}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Android Emoji", "EmojiSymbols", sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Add shadow
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+            ctx.shadowBlur = 4;
+            ctx.shadowOffsetY = 2;
+            
+            // Render emoji
+            ctx.fillStyle = 'white';
+            ctx.fillText(emoji, size/2, size/2);
+        }
+        
+        function downloadFixed(name, emoji) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 512;
+            canvas.height = 512;
+            const ctx = canvas.getContext('2d');
+            
+            // Create radial gradient for more depth
+            const gradient = ctx.createRadialGradient(
+                512 * 0.3, 512 * 0.3, 0,
+                512 * 0.5, 512 * 0.5, 512 * 0.7
+            );
+            gradient.addColorStop(0, '#305FD1');
+            gradient.addColorStop(1, '#0A2F8F');
+            
+            // Fill circle
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(256, 256, 256, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Glass overlay
+            const overlaySize = 140;
+            const overlayPos = (512 - overlaySize) / 2;
+            ctx.fillStyle = 'rgba(233, 244, 255, 0.08)';
+            ctx.fillRect(overlayPos, overlayPos, overlaySize, overlaySize);
+            
+            // Glass border
+            ctx.strokeStyle = 'rgba(233, 244, 255, 0.06)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(overlayPos, overlayPos, overlaySize, overlaySize);
+            
+            // Emoji with comprehensive font fallbacks
+            ctx.font = '200px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Android Emoji", "EmojiSymbols", "Segoe UI Symbol", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Shadow
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+            ctx.shadowBlur = 8;
+            ctx.shadowOffsetY = 4;
+            
+            ctx.fillStyle = 'white';
+            ctx.fillText(emoji, 256, 256);
+            
+            // Download with corrected filename
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${name}-discord-avatar-512-FIXED.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 'image/png');
+        }
+        
+        // Initialize previews
+        createPreview('pebblesPreview', '🎨');
+        createPreview('gazooPreview', '👽');
+        
+        console.log('Previews loaded - emojis should render correctly now!');
+    </script>
+    
+    <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+        <h3>🔧 Fixed Issues:</h3>
+        <ul>
+            <li>✅ Proper emoji font stack for cross-platform compatibility</li>
+            <li>✅ Radial gradient for more depth and dimensionality</li>
+            <li>✅ Better glass overlay positioning</li>
+            <li>✅ Canvas-based rendering (not PIL) for accurate emoji display</li>
+        </ul>
+        <p><strong>These should show the actual 🎨 artist palette and 👽 alien emojis correctly!</strong></p>
+    </div>
+</body>
+</html>
