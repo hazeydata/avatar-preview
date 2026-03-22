@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Avatar Visual Mockups</title>
+    <style>
+        body { 
+            background: #0d1117; 
+            color: white; 
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 40px; 
+            text-align: center;
+        }
+        
+        .avatar-showcase {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .avatar-card {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0A2F8F 0%, #305FD1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(10, 47, 143, 0.4);
+            border: 2px solid rgba(90, 150, 234, 0.2);
+        }
+        
+        .avatar::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+        }
+        
+        .emoji {
+            font-size: 80px;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+        
+        h2 {
+            margin: 0 0 8px;
+            font-size: 1.3em;
+            background: linear-gradient(135deg, #0A2F8F 0%, #305FD1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .role {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .description {
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+            line-height: 1.4;
+            max-width: 200px;
+        }
+        
+        .size-demo {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            align-items: end;
+        }
+        
+        .size-demo div {
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0A2F8F 0%, #305FD1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(90, 150, 234, 0.3);
+        }
+        
+        .size-32 { width: 32px; height: 32px; font-size: 16px; }
+        .size-64 { width: 64px; height: 64px; font-size: 32px; }
+        .size-96 { width: 96px; height: 96px; font-size: 48px; }
+        
+        h1 {
+            background: linear-gradient(135deg, #0A2F8F 0%, #305FD1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        
+        .note {
+            background: rgba(90, 150, 234, 0.1);
+            border: 1px solid rgba(90, 150, 234, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 500px;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Discord Avatar Icons</h1>
+    
+    <div class="note">
+        <strong>Visual Preview:</strong> Artist palette for Pebbles (design expertise) and alien for Gazoo (otherworldly quality auditing). Both on Benedictus brand gradient with glass overlay effects.
+    </div>
+    
+    <div class="avatar-showcase">
+        <div class="avatar-card">
+            <div class="avatar">
+                <div class="emoji">🎨</div>
+            </div>
+            <h2>Pebbles</h2>
+            <div class="role">Visual Design Lead</div>
+            <div class="description">
+                Artist palette perfectly represents creative expertise and design leadership role
+            </div>
+            <div class="size-demo">
+                <div class="size-32">🎨</div>
+                <div class="size-64">🎨</div>
+                <div class="size-96">🎨</div>
+            </div>
+        </div>
+        
+        <div class="avatar-card">
+            <div class="avatar">
+                <div class="emoji">👽</div>
+            </div>
+            <h2>Gazoo</h2>
+            <div class="role">Quality Auditor</div>
+            <div class="description">
+                The Great Gazoo reference - quality auditor from another world watching over our processes
+            </div>
+            <div class="size-demo">
+                <div class="size-32">👽</div>
+                <div class="size-64">👽</div>
+                <div class="size-96">👽</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="note">
+        <strong>Ready for Discord:</strong> These icons work perfectly at all Discord sizes - from 32px mentions to 512px profile images. Much more expressive than letters!
+    </div>
+</body>
+</html>
